@@ -1,9 +1,14 @@
-var self = require('sdk/self');
+var panels = require("sdk/panel");
+var self = require("sdk/self");
 
-// a dummy function, to show how tests work.
-// to see how to test this function, look at test/test-index.js
-function dummy(text, callback) {
-  callback(text);
+var panel = panels.Panel({
+	contentURL: self.data.url("panel.html"),
+	contentScriptFile: [self.data.url("jquery-1.11.3.min.js"), self.data.url("rss.js")],
+	onHide: handleHide,
+	width: 210,
+	height: 55
+});
+
+function handleHide() {
+	console.log('hide');
 }
-
-exports.dummy = dummy;

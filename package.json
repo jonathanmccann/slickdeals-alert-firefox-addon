@@ -9,5 +9,8 @@
     "firefox": ">=38.0a1",
     "fennec": ">=38.0a1"
   },
+  "permissions": {
+    "cross-domain-content": ["http://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"]
+  },
   "license": "MIT"
 }
