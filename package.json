@@ -1,0 +1,13 @@
+{
+  "title": "Slickdeals Frontpage Alert",
+  "name": "slickdeals-alert-firefox-addon",
+  "version": "0.0.1",
+  "description": "This Firefox addon will provide a Firefox alert message when there is a new frontpage deal.",
+  "main": "index.js",
+  "author": "Jonathan McCann",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT"
+}
