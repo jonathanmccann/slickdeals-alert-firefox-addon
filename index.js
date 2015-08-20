@@ -39,11 +39,5 @@ function handleHide() {
 // On notify from rss.js, increase the badge number and change it's color
 panel.port.on("notify", function(title, url) {
 	button.badge = button.badge + 1;
-
-	if (button.badge > 0) {
-		button.badgeColor = "#ff0000";
-	}
-	else {
-		button.badgeColor = "#00AAAA";
-	}
+	button.badgeColor = "#ff0000";
 });
