@@ -40,7 +40,7 @@ function handleHide() {
 	button.state('window', {checked: false});
 }
 
-// On notify from rss.js, increase the badge number and change it's color
+// On notify from rss.js, increase the badge number, change its color, resize the panel, and update the deal list
 panel.port.on("notify", function(dealTitle, dealUrl) {
 	button.badge = button.badge + 1;
 	button.badgeColor = "#ff0000";
@@ -53,6 +53,7 @@ panel.port.on("notify", function(dealTitle, dealUrl) {
 	});
 });
 
+// Handle opening the deal in a new tab
 panel.port.on("clickDealLink", function(dealUrl) {
 	tabs.open(dealUrl);
 });

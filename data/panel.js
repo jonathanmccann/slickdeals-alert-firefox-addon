@@ -1,5 +1,6 @@
 var dealTable = document.getElementById("myTable");
 
+// When showing the deal list, erase the previous table and construct a new one. Deals are sepearated by horizonatal rules.
 self.port.on("dealListShow", function(dealList) {
 	dealTable.innerHTML = "";
 
@@ -12,6 +13,7 @@ self.port.on("dealListShow", function(dealList) {
 	}
 });
 
+// Listen for clicks on links, stop the event, and allow index.js to handle opening the link
 window.addEventListener('click', function(event) {
 	var clickTarget = event.target;
 	
