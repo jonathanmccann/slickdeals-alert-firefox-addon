@@ -5,9 +5,6 @@ setInterval(function() {
 		var rssItem = $(data).find("item:first");
 
 		if (previousDealTitle != rssItem.find("title").text()) {
-			console.log("title - " + rssItem.find("title").text());
-			console.log("href - " + rssItem.find("link").text());
-
 			self.port.emit("notify", rssItem.find("title").text(), rssItem.find("link").text());
 
 			previousDealTitle = rssItem.find("title").text();
