@@ -1,5 +1,6 @@
 var dealList = [];
 var panels = require("sdk/panel");
+var tabs = require("sdk/tabs");
 var { ToggleButton } = require('sdk/ui/button/toggle');
 var self = require("sdk/self");
 
@@ -48,4 +49,8 @@ panel.port.on("notify", function(dealTitle, dealUrl) {
 		title: dealTitle,
 		url: dealUrl
 	});
+});
+
+panel.port.on("clickDealLink", function(dealUrl) {
+	tabs.open(dealUrl);
 });
