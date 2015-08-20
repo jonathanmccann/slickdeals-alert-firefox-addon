@@ -23,7 +23,7 @@ self.port.on("dealListShow", function(dealList) {
 // Listen for clicks on links, stop the event, and allow index.js to handle opening the link
 window.addEventListener('click', function(event) {
 	var clickTarget = event.target;
-	
+
 	if (clickTarget.nodeName == 'A') {
 		event.stopPropagation();
 		event.preventDefault();
