@@ -45,6 +45,8 @@ panel.port.on("notify", function(dealTitle, dealUrl) {
 	button.badge = button.badge + 1;
 	button.badgeColor = "#ff0000";
 
+	panel.resize(210, 95 * button.badge);
+
 	dealList.push({
 		title: dealTitle,
 		url: dealUrl
