@@ -1,3 +1,4 @@
+var dealList = [];
 var panels = require("sdk/panel");
 var { ToggleButton } = require('sdk/ui/button/toggle');
 var self = require("sdk/self");
@@ -18,7 +19,7 @@ var button = ToggleButton({
 
 var panel = panels.Panel({
 	contentURL: self.data.url("panel.html"),
-	contentScriptFile: [self.data.url("jquery-1.11.3.min.js"), self.data.url("rss.js")],
+	contentScriptFile: [self.data.url("jquery-1.11.3.min.js"), self.data.url("panel.js"), self.data.url("rss.js")],
 	onHide: handleHide,
 	width: 210,
 	height: 55
@@ -29,6 +30,8 @@ function handleChange(state) {
 		panel.show({
 			position: button
 		});
+
+		panel.port.emit("dealListShow", dealList);
 	}
 }
 
@@ -37,7 +40,12 @@ function handleHide() {
 }
 
 // On notify from rss.js, increase the badge number and change it's color
-panel.port.on("notify", function(title, url) {
+panel.port.on("notify", function(dealTitle, dealUrl) {
 	button.badge = button.badge + 1;
 	button.badgeColor = "#ff0000";
+
+	dealList.push({
+		title: dealTitle,
+		url: dealUrl
+	});
 });
