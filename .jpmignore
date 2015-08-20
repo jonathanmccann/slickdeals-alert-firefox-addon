@@ -1,0 +1,4 @@
+*.xpi
+/.git
+.gitignore
+.jpmignore
