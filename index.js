@@ -40,8 +40,8 @@ function handleHide() {
 	button.state('window', {checked: false});
 }
 
-// On notify from rss.js, increase the badge number, change its color, resize the panel, and update the deal list
-panel.port.on("notify", function(dealTitle, dealUrl) {
+// On notification from rss.js, increase the badge number, change its color, resize the panel, and update the deal list
+panel.port.on("newDeal", function(dealTitle, dealUrl) {
 	button.badge = button.badge + 1;
 	button.badgeColor = "#ff0000";
 

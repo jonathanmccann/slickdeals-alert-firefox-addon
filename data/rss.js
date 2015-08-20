@@ -7,7 +7,7 @@ setInterval(function() {
 		var dealTitle = truncateTitle(rssItem.find("title").text());
 
 		if (previousDealTitle != dealTitle) {
-			self.port.emit("notify", dealTitle, rssItem.find("link").text());
+			self.port.emit("newDeal", dealTitle, rssItem.find("link").text());
 
 			previousDealTitle = dealTitle;
 		}
