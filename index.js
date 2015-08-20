@@ -69,6 +69,8 @@ panel.port.on("clickDealLink", function(dealUrl) {
 	else {
 		panel.resize(210, 95 * button.badge);
 	}
+
+	panel.hide();
 });
 
 function indexOfUrl(dealUrl) {
