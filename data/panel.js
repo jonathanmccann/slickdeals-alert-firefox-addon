@@ -4,11 +4,18 @@ var dealTable = document.getElementById("myTable");
 self.port.on("dealListShow", function(dealList) {
 	dealTable.innerHTML = "";
 
-	for (var i = 0; i < dealList.length; i++) {
-		dealTable.insertRow(0).insertCell(0).innerHTML = '<a href=' + dealList[i].url + 'target="_blank">' + dealList[i].title + '</a>';
+	var dealListLength = dealList.length;
 
-		if ((i + 1) < dealList.length) {
-			dealTable.insertRow(0).insertCell(0).innerHTML = '<hr>';
+	if (dealListLength == 0) {
+		dealTable.insertRow(0).insertCell(0).innerHTML = "There are no new deals.";
+	}
+	else {
+		for (var i = 0; i < dealListLength; i++) {
+			dealTable.insertRow(0).insertCell(0).innerHTML = '<a href=' + dealList[i].url + 'target="_blank">' + dealList[i].title + '</a>';
+
+			if ((i + 1) < dealListLength) {
+				dealTable.insertRow(0).insertCell(0).innerHTML = '<hr>';
+			}
 		}
 	}
 });

@@ -23,7 +23,7 @@ var panel = panels.Panel({
 	contentScriptFile: [self.data.url("jquery-1.11.3.min.js"), self.data.url("panel.js"), self.data.url("rss.js")],
 	onHide: handleHide,
 	width: 210,
-	height: 95
+	height: 40
 });
 
 function handleChange(state) {
