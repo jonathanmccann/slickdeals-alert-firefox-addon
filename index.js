@@ -53,7 +53,32 @@ panel.port.on("notify", function(dealTitle, dealUrl) {
 	});
 });
 
-// Handle opening the deal in a new tab
+// Handle opening the deal in a new tab and remove the deal from the list
 panel.port.on("clickDealLink", function(dealUrl) {
 	tabs.open(dealUrl);
+
+	dealList.splice(indexOfUrl(dealUrl), 1);
+
+	button.badge = button.badge - 1;
+
+	if (button.badge == 0) {
+		button.badgeColor = "#00AAAA";
+
+		panel.resize(210, 40);
+	}
+	else {
+		panel.resize(210, 95 * button.badge);
+	}
 });
+
+function indexOfUrl(dealUrl) {
+	for (var i = 0; i < dealList.length; i++) {
+		var dealListUrl = dealList[i].url;
+
+		if (dealListUrl === dealUrl) {
+			return i;
+		}
+	}
+
+	return -1;
+}
