@@ -2,6 +2,13 @@
   "title": "Slickdeals Alert",
   "name": "slickdeals-alert-firefox-addon",
   "version": "0.0.1",
+  "preferences": [{
+    "name": "rssUrl",
+    "title": "Slickdeals RSS URL",
+    "description": "Input a custom RSS URL",
+    "type": "string",
+    "value": "http://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"
+  }],
   "description": "This Firefox addon will provide a Firefox alert message when there is a new frontpage deal or a custom search that can be set in the preferences.",
   "main": "index.js",
   "author": "Jonathan McCann",
