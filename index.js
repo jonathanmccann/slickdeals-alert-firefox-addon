@@ -47,7 +47,7 @@ panel.port.on("newDeal", function(dealTitle, dealUrl) {
 
 	panel.resize(210, 95 * button.badge);
 
-	dealList.push({
+	dealList.unshift({
 		title: dealTitle,
 		url: dealUrl
 	});
