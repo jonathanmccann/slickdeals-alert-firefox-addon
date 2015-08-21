@@ -10,6 +10,16 @@ self.port.on("dealListShow", function(dealList) {
 		dealTable.insertRow(0).insertCell(0).innerHTML = "There are no new deals.";
 	}
 	else {
+		dealTable.insertRow(0).insertCell(0).innerHTML = '<button id="clearDealList">Mark All As Read</button>';
+		dealTable.insertRow(0).insertCell(0).innerHTML = '<hr>';
+
+		var clearDealList = document.getElementById("clearDealList");
+
+		// Listen for button clicks and emit for index.js to run associated functions
+		clearDealList.addEventListener('click', function() {
+			self.port.emit("clearDealList");
+		});
+
 		for (var i = 0; i < dealListLength; i++) {
 			dealTable.insertRow(0).insertCell(0).innerHTML = '<a href=' + dealList[i].url + 'target="_blank">' + dealList[i].title + '</a>';
 

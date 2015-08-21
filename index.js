@@ -73,6 +73,16 @@ panel.port.on("clickDealLink", function(dealUrl) {
 	panel.hide();
 });
 
+panel.port.on("clearDealList", function() {
+	dealList = [];
+
+	button.badge = 0;
+	button.badgeColor = "#00AAAA";
+
+	panel.resize(210, 40);
+	panel.hide();
+});
+
 function indexOfUrl(dealUrl) {
 	dealUrl = dealUrl.substring(0, dealUrl.indexOf("target"));
 
