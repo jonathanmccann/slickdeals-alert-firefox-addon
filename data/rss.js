@@ -25,8 +25,6 @@ setInterval(function() {
 				}
 
 				self.port.emit("newDeal", dealTitle, $(this).find("link").text());
-
-				previousDealTitle = dealTitle;
 			});
 
 			previousDealTitle = latestDealTitle;
