@@ -1,4 +1,4 @@
-Slickdeals Frontpage Alert Firefox Addon
+Slickdeals Alert Firefox Addon
 ========
 
 This Firefox addon will provide a Firefox alert message when there is a new frontpage deal or a new deal from a custom search, which can be set in the preferences. To make a custom search URL, perform a search on [Slickdeals](http://www.slickdeals.net) and you should receive a URL similar to the following:
@@ -19,6 +19,8 @@ The alerts will be displayed as a colored badge on the toolbar button. If there 
 
 Installation
 ========
+
+This extension is available for installation via [Mozzila's Add-Ons](https://addons.mozilla.org/en-US/firefox/addon/slickdeals-alert/)
 
 To build and install this extension from source, you will first need to install [Mozzila's Add-On SDK](https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm#Installation). Once that is installed, run the following command in the root directory (where the package.json is stored):
 
