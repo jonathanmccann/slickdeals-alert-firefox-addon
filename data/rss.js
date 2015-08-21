@@ -13,7 +13,7 @@ setInterval(function() {
 
 				// If this is the first time the extension has run, do not display anything to the user
 				if (previousDealTitle == undefined | previousDealTitle == null) {
-					previousDealTitle = dealTitle;
+					latestDealTitle = dealTitle;
 
 					return false;
 				}
