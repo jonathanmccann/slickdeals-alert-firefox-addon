@@ -48,4 +48,6 @@ function truncateTitle(dealTitle){
 
 self.port.on("updateRssUrl", function(preferenceRssUrl) {
 	rssUrl = preferenceRssUrl;
+	latestDealTitle = null;
+	previousDealTitle = null;
 });
