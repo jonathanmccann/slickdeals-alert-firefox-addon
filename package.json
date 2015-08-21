@@ -1,8 +1,8 @@
 {
-  "title": "Slickdeals Frontpage Alert",
+  "title": "Slickdeals Alert",
   "name": "slickdeals-alert-firefox-addon",
   "version": "0.0.1",
-  "description": "This Firefox addon will provide a Firefox alert message when there is a new frontpage deal.",
+  "description": "This Firefox addon will provide a Firefox alert message when there is a new frontpage deal or a custom search that can be set in the preferences.",
   "main": "index.js",
   "author": "Jonathan McCann",
   "engines": {
@@ -10,7 +10,7 @@
     "fennec": ">=38.0a1"
   },
   "permissions": {
-    "cross-domain-content": ["http://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"]
+    "cross-domain-content": ["http://slickdeals.net/"]
   },
   "license": "MIT"
 }
