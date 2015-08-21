@@ -1,10 +1,11 @@
 var latestDealTitle;
 var previousDealTitle;
+var rssUrl = "http://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1";
 
 // Query Slickdeals for its Frontpage RSS feed and determine if there is a new deal to notify the user of
 setInterval(function() {
 	$.ajax({
-		url: "http://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1",
+		url: rssUrl,
 		cache: false,
 		success: function (data) {
 			$(data).find("item").each(function(index) {
