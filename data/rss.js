@@ -1,3 +1,4 @@
+var latestDealTitle;
 var previousDealTitle;
 
 // Query Slickdeals for its Frontpage RSS feed and determine if there is a new deal to notify the user of
@@ -6,14 +7,23 @@ setInterval(function() {
 		url: "http://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1",
 		cache: false,
 		success: function (data) {
-			var rssItem = $(data).find("item:first");
-			var dealTitle = truncateTitle(rssItem.find("title").text());
+			$(data).find("item").each(function(index) {
+				var dealTitle = truncateTitle($(this).find("title").text());
 
-			if (previousDealTitle != dealTitle) {
-				self.port.emit("newDeal", dealTitle, rssItem.find("link").text());
+				if (previousDealTitle == dealTitle) {
+					return false;
+				}
+
+				if (index == 0) {
+					latestDealTitle = dealTitle;
+				}
+
+				self.port.emit("newDeal", dealTitle, $(this).find("link").text());
 
 				previousDealTitle = dealTitle;
-			}
+			});
+
+			previousDealTitle = latestDealTitle;
 		}
 	});
 }, 10000);
