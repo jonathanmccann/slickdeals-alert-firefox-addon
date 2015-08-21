@@ -1,8 +1,11 @@
 var dealList = [];
 var panels = require("sdk/panel");
+var preferences = require("sdk/simple-prefs").prefs;
 var tabs = require("sdk/tabs");
 var { ToggleButton } = require('sdk/ui/button/toggle');
 var self = require("sdk/self");
+
+require("sdk/simple-prefs").on("rssUrl", onRssUrlPreferenceChange);
 
 // Panel size constants
 var PANEL_HEIGHT = 40;
@@ -57,6 +60,12 @@ function indexOfUrl(dealUrl) {
 	}
 
 	return -1;
+}
+
+function onRssUrlPreferenceChange() {
+	rssUrl = preferences.rssUrl;
+
+	panel.port.emit("updateRssUrl", rssUrl);
 }
 
 // On notification from rss.js, increase the badge number, change its color, and update the deal list

@@ -45,3 +45,7 @@ function truncateTitle(dealTitle){
 		return dealTitle;
 	}
 };
+
+self.port.on("updateRssUrl", function(preferenceRssUrl) {
+	rssUrl = preferenceRssUrl;
+});
