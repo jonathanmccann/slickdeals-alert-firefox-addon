@@ -74,6 +74,8 @@ panel.port.on("clickDealLink", function(dealUrl) {
 });
 
 function indexOfUrl(dealUrl) {
+	dealUrl = dealUrl.substring(0, dealUrl.indexOf("target"));
+
 	for (var i = 0; i < dealList.length; i++) {
 		var dealListUrl = dealList[i].url;
 
