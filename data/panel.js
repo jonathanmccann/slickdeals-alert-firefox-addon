@@ -15,7 +15,7 @@ self.port.on("dealListShow", function(dealList) {
 
 		var clearDealList = document.getElementById("clearDealList");
 
-		// Listen for button clicks and emit for index.js to run associated functions
+		// Listen for button clicks and emit for index.js to clear the deal list
 		clearDealList.addEventListener('click', function() {
 			self.port.emit("clearDealList");
 		});
@@ -32,6 +32,7 @@ self.port.on("dealListShow", function(dealList) {
 	resizePanelHeight();
 });
 
+// Resize the panel height according to the newly created HTML document
 function resizePanelHeight() {
 	self.port.emit("resizePanelHeight", document.body.offsetHeight);
 }

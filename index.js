@@ -45,6 +45,20 @@ function handleHide() {
 	button.state('window', {checked: false});
 }
 
+function indexOfUrl(dealUrl) {
+	dealUrl = dealUrl.substring(0, dealUrl.indexOf("target"));
+
+	for (var i = 0; i < dealList.length; i++) {
+		var dealListUrl = dealList[i].url;
+
+		if (dealListUrl === dealUrl) {
+			return i;
+		}
+	}
+
+	return -1;
+}
+
 // On notification from rss.js, increase the badge number, change its color, and update the deal list
 panel.port.on("newDeal", function(dealTitle, dealUrl) {
 	button.badge = button.badge + 1;
@@ -71,6 +85,7 @@ panel.port.on("clickDealLink", function(dealUrl) {
 	panel.hide();
 });
 
+// Tied to the "Mark All As Read" button. Removes all deals from the deal list
 panel.port.on("clearDealList", function() {
 	dealList = [];
 
@@ -80,20 +95,7 @@ panel.port.on("clearDealList", function() {
 	panel.hide();
 });
 
+// Resizes the panel based on the HTML document's size
 panel.port.on("resizePanelHeight", function(height) {
 	panel.resize(PANEL_WIDTH, height + PANEL_HEIGHT_PADDING);
 });
-
-function indexOfUrl(dealUrl) {
-	dealUrl = dealUrl.substring(0, dealUrl.indexOf("target"));
-
-	for (var i = 0; i < dealList.length; i++) {
-		var dealListUrl = dealList[i].url;
-
-		if (dealListUrl === dealUrl) {
-			return i;
-		}
-	}
-
-	return -1;
-}
