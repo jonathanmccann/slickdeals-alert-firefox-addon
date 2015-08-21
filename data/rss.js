@@ -10,6 +10,12 @@ setInterval(function() {
 			$(data).find("item").each(function(index) {
 				var dealTitle = truncateTitle($(this).find("title").text());
 
+				if (previousDealTitle == undefined | previousDealTitle == null) {
+					previousDealTitle = dealTitle;
+
+					return false;
+				}
+
 				if (previousDealTitle == dealTitle) {
 					return false;
 				}
