@@ -28,7 +28,13 @@ self.port.on("dealListShow", function(dealList) {
 			}
 		}
 	}
+
+	resizePanelHeight();
 });
+
+function resizePanelHeight() {
+	self.port.emit("resizePanelHeight", document.body.offsetHeight);
+}
 
 // Listen for clicks on links, stop the event, and allow index.js to handle opening the link
 window.addEventListener('click', function(event) {

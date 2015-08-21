@@ -4,6 +4,11 @@ var tabs = require("sdk/tabs");
 var { ToggleButton } = require('sdk/ui/button/toggle');
 var self = require("sdk/self");
 
+// Panel size constants
+var PANEL_HEIGHT = 40;
+var PANEL_HEIGHT_PADDING =  20;
+var PANEL_WIDTH = 210;
+
 // Create toggle button for toolbar
 var button = ToggleButton({
 	id: "slickdeals-alert",
@@ -22,17 +27,17 @@ var panel = panels.Panel({
 	contentURL: self.data.url("panel.html"),
 	contentScriptFile: [self.data.url("jquery-1.11.3.min.js"), self.data.url("panel.js"), self.data.url("rss.js")],
 	onHide: handleHide,
-	width: 210,
-	height: 40
+	width: PANEL_WIDTH,
+	height: PANEL_HEIGHT
 });
 
 function handleChange(state) {
 	if (state.checked) {
+		panel.port.emit("dealListShow", dealList);
+
 		panel.show({
 			position: button
 		});
-
-		panel.port.emit("dealListShow", dealList);
 	}
 }
 
@@ -40,12 +45,10 @@ function handleHide() {
 	button.state('window', {checked: false});
 }
 
-// On notification from rss.js, increase the badge number, change its color, resize the panel, and update the deal list
+// On notification from rss.js, increase the badge number, change its color, and update the deal list
 panel.port.on("newDeal", function(dealTitle, dealUrl) {
 	button.badge = button.badge + 1;
 	button.badgeColor = "#ff0000";
-
-	panel.resize(210, 95 * button.badge);
 
 	dealList.unshift({
 		title: dealTitle,
@@ -63,11 +66,6 @@ panel.port.on("clickDealLink", function(dealUrl) {
 
 	if (button.badge == 0) {
 		button.badgeColor = "#00AAAA";
-
-		panel.resize(210, 40);
-	}
-	else {
-		panel.resize(210, 95 * button.badge);
 	}
 
 	panel.hide();
@@ -79,8 +77,11 @@ panel.port.on("clearDealList", function() {
 	button.badge = 0;
 	button.badgeColor = "#00AAAA";
 
-	panel.resize(210, 40);
 	panel.hide();
+});
+
+panel.port.on("resizePanelHeight", function(height) {
+	panel.resize(PANEL_WIDTH, height + PANEL_HEIGHT_PADDING);
 });
 
 function indexOfUrl(dealUrl) {
