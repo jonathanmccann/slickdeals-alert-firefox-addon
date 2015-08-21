@@ -9,7 +9,7 @@
     "type": "string",
     "value": "http://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"
   }],
-  "description": "This Firefox addon will provide a Firefox alert message when there is a new frontpage deal or a custom search that can be set in the preferences.",
+  "description": "This Firefox addon will provide a Firefox alert message when there is a new frontpage deal or a new deal from a custom search, which can be set in the preferences.",
   "main": "index.js",
   "author": "Jonathan McCann",
   "engines": {
